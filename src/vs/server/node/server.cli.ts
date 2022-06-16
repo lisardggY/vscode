@@ -167,7 +167,16 @@ export function main(desc: ProductDescription, args: string[]): void {
 		try {
 			let stdinFilePath = cliStdInFilePath;
 			if (!stdinFilePath) {
-				stdinFilePath = getStdinFilePath();
+				let stdinFileType: string | undefined;
+				stdinFileType = parsedArgs['file-type'];
+
+				// Remove dot from beginning if it appears.
+				if (stdinFileType && stdinFileType[0] === '.') {
+					stdinFileType = stdinFileType.slice(1);
+				}
+
+				stdinFilePath = getStdinFilePath(stdinFileType);
+
 				readFromStdin(stdinFilePath, verbose); // throws error if file can not be written
 			}
 

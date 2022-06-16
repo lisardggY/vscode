@@ -383,7 +383,7 @@ export function parseLineAndColumnAware(rawPath: string): IPathWithLineAndColumn
 
 const pathChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-export function randomPath(parent?: string, prefix?: string, randomLength = 8): string {
+export function randomPath(parent?: string, prefix?: string, extension?: string, randomLength = 8): string {
 	let suffix = '';
 	for (let i = 0; i < randomLength; i++) {
 		suffix += pathChars.charAt(Math.floor(Math.random() * pathChars.length));
@@ -396,9 +396,15 @@ export function randomPath(parent?: string, prefix?: string, randomLength = 8): 
 		randomFileName = suffix;
 	}
 
+	if (extension) {
+		randomFileName += '.' + extension;
+	}
+
 	if (parent) {
 		return join(parent, randomFileName);
 	}
+
+
 
 	return randomFileName;
 }

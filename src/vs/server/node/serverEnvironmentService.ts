@@ -68,6 +68,7 @@ export const serverOptions: OptionDescriptions<ServerParsedArgs> = {
 	'pre-release': OPTIONS['pre-release'],
 	'start-server': { type: 'boolean', cat: 'e', description: nls.localize('start-server', "Start the server when installing or uninstalling extensions. To be used in combination with 'install-extension', 'install-builtin-extension' and 'uninstall-extension'.") },
 
+	'file-type': { type: 'string' },
 
 	/* ----- remote development options ----- */
 
@@ -181,6 +182,8 @@ export interface ServerParsedArgs {
 	'pre-release'?: boolean; // used by install-extension
 
 	'start-server'?: boolean;
+
+	'file-type'?: string;
 
 	/* ----- remote development options ----- */
 

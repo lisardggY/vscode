@@ -158,7 +158,16 @@ export async function main(argv: string[]): Promise<any> {
 			// checking for stdin being connected to a TTY is not enough (https://github.com/microsoft/vscode/issues/40351)
 
 			if (hasReadStdinArg) {
-				stdinFilePath = getStdinFilePath();
+				let stdinFileType: string | undefined;
+				stdinFileType = args['file-type'];
+
+				// Remove dot from beginning if it appears.
+				if (stdinFileType && stdinFileType[0] === '.') {
+					stdinFileType = stdinFileType.slice(1);
+				}
+
+
+				stdinFilePath = getStdinFilePath(stdinFileType);
 
 				// returns a file path where stdin input is written into (write in progress).
 				try {
