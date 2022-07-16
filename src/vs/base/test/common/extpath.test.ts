@@ -213,10 +213,18 @@ suite('Paths', () => {
 
 		assert.notStrictEqual(r1, r2);
 
-		const r3 = extpath.randomPath('', '', 3);
+		const r3 = extpath.randomPath('', '', '', 3);
 		assert.strictEqual(r3.length, 3);
 
 		const r4 = extpath.randomPath();
 		assert.ok(r4);
+
+		const r5 = extpath.randomPath(undefined, undefined, 'ext');
+		assert.ok(r5.endsWith(".ext"));
+
+		const r6 = extpath.randomPath(undefined, undefined, '.ext');
+		assert.ok(r6.endsWith(".ext"));
+
+		assert.equal(r5, r6);
 	});
 });

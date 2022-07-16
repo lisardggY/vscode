@@ -34,8 +34,8 @@ export function stdinDataListener(durationinMs: number): Promise<boolean> {
 	});
 }
 
-export function getStdinFilePath(): string {
-	return randomPath(tmpdir(), 'code-stdin', 3);
+export function getStdinFilePath(extension?: string): string {
+	return randomPath(tmpdir(), 'code-stdin', extension, 3);
 }
 
 export async function readFromStdin(targetPath: string, verbose: boolean): Promise<void> {

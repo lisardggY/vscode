@@ -159,7 +159,7 @@ export class WorkingCopyHistoryModel {
 		const historyEntriesFolder = assertIsDefined(this.historyEntriesFolder);
 
 		// Perform a fast clone operation with minimal overhead to a new random location
-		const id = `${randomPath(undefined, undefined, 4)}${extname(workingCopyResource)}`;
+		const id = `${randomPath(undefined, undefined, undefined, 4)}${extname(workingCopyResource)}`;
 		const location = joinPath(historyEntriesFolder, id);
 		await this.fileService.cloneFile(workingCopyResource, location);
 

@@ -846,7 +846,7 @@ suite('Map', () => {
 		for (let round = 10; round >= 0; round--) {
 			const keys: URI[] = [];
 			for (let i = 0; i < 100; i++) {
-				keys.push(URI.from({ scheme: 'fake-fs', path: randomPath(undefined, undefined, 10) }));
+				keys.push(URI.from({ scheme: 'fake-fs', path: randomPath(undefined, undefined, undefined, 10) }));
 			}
 			const tst = TernarySearchTree.forUris<boolean>();
 
